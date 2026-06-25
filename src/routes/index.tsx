@@ -615,7 +615,7 @@ function Manifesto() {
   return (
     <section className="relative isolate overflow-hidden">
       <img
-        src={estiloEscolha.url}
+        src={whatsappEstiloEscolha.url}
         alt="Estilo é escolha. Confiança é tudo. Uma mulher empoderada não precisa abrir a boca para dizer nada."
         className="block h-auto w-full"
         loading="lazy"
