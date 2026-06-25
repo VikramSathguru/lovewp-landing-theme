@@ -150,18 +150,43 @@
   }
 
   body {
-    background-color: #3d2a1e;
-    background-image:
-      radial-gradient(ellipse 80% 60% at 20% 0%, rgba(180, 130, 70, 0.35), transparent 60%),
-      radial-gradient(ellipse 70% 50% at 85% 30%, rgba(120, 75, 35, 0.55), transparent 65%),
-      radial-gradient(ellipse 90% 70% at 50% 100%, rgba(30, 18, 10, 0.85), transparent 70%),
-      linear-gradient(160deg, #5a3a25 0%, #3d2618 45%, #261509 100%);
-    background-attachment: fixed;
+    position: relative;
+    background-color: #1a0e07;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Mesmerizing diffused brownish aurora — fixed behind all content */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -10%;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 35% at 18% 22%, rgba(214, 158, 92, 0.42), transparent 70%),
+      radial-gradient(45% 40% at 82% 18%, rgba(168, 104, 52, 0.45), transparent 72%),
+      radial-gradient(55% 45% at 70% 78%, rgba(126, 72, 36, 0.55), transparent 75%),
+      radial-gradient(50% 45% at 22% 82%, rgba(92, 52, 26, 0.55), transparent 75%),
+      radial-gradient(80% 70% at 50% 50%, rgba(58, 32, 18, 0.55), transparent 80%),
+      linear-gradient(165deg, #2e1a0e 0%, #1c0f07 55%, #100802 100%);
+    filter: blur(70px) saturate(115%);
+    animation: aurora-drift 28s ease-in-out infinite alternate;
+  }
+
+  /* Soft grain / vignette for sophistication */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 120% 90% at 50% 50%, transparent 55%, rgba(10, 5, 2, 0.55) 100%);
+    mix-blend-mode: multiply;
   }
 
   h1, h2, h3, h4, .font-display {
@@ -250,6 +275,16 @@
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-script: var(--font-script);
+}
+
+@keyframes aurora-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); filter: blur(70px) saturate(115%) hue-rotate(0deg); }
+  50%  { transform: translate3d(-2%, 1.5%, 0) scale(1.06); filter: blur(80px) saturate(125%) hue-rotate(-6deg); }
+  100% { transform: translate3d(2%, -1.5%, 0) scale(1.04); filter: blur(75px) saturate(120%) hue-rotate(4deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
 }
 
 html {
