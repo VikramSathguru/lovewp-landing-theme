@@ -277,6 +277,16 @@
   --font-script: var(--font-script);
 }
 
+@keyframes aurora-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); filter: blur(70px) saturate(115%) hue-rotate(0deg); }
+  50%  { transform: translate3d(-2%, 1.5%, 0) scale(1.06); filter: blur(80px) saturate(125%) hue-rotate(-6deg); }
+  100% { transform: translate3d(2%, -1.5%, 0) scale(1.04); filter: blur(75px) saturate(120%) hue-rotate(4deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
