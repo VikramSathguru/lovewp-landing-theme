@@ -18,6 +18,7 @@ import product4 from "@/assets/product-4.jpg";
 import estiloEscolha from "@/assets/estilo-escolha.jpg.asset.json";
 import highlightBanner from "@/assets/highlight-banner.jpeg.asset.json";
 import lookbookLight from "@/assets/lookbook-light.jpeg.asset.json";
+import whatsappEstiloEscolha from "@/assets/whatsapp-estilo-escolha.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
